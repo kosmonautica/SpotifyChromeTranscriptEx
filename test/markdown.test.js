@@ -26,7 +26,8 @@ test('builds an Obsidian note with properties, wikilinks and speaker turns', () 
   assert.match(md, /^---\ntitle: "#211 Was ist \\"die\\" Campfire Method"\n/);
   assert.match(md, /^show: "\[\[Unboxing New Work\]\]"$/m);
   assert.match(md, /^url: https:\/\/open\.spotify\.com\/episode\/6abc123XYZ$/m);
-  assert.match(md, /^date: 2026-10-05$/m);
+  assert.match(md, /^date: "\[\[2026-10-05\]\]"$/m);
+  assert.match(md, /^\*\*Date:\*\* \[\[2026-10-05\]\]$/m);
   assert.match(md, /^duration: "1 hr"$/m);
   assert.match(md, /^speakers:\n {2}- "Sprecher\*in 1"\n {2}- "Sprecher\*in 2"$/m);
   assert.match(md, /^tags:\n {2}- podcast\n {2}- transcript\n---$/m);

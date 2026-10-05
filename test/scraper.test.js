@@ -41,6 +41,22 @@ test('the chapters tab is not part of the transcript', () => {
   assert.doesNotMatch(all, /Kapitel/);
 });
 
+test('chapter headings inside the transcript are not speakers', () => {
+  const heading = (s) => `<span class="e-10860-text encore-text-marginal-bold" data-encore-id="text">${s}</span>`;
+  const page = html.replace(
+    '<div role="tabpanel" id="transcript-panel" aria-labelledby="transcript-tab">',
+    `$&<div>${heading('Begrüßung und die Vorstellung von Jan')}</div>`,
+  );
+  const ep = scrape(page);
+  assert.doesNotMatch(ep.turns.map((t) => t.speaker).join('|'), /Begrüßung/);
+  assert.equal(ep.turns[0].speaker, 'Sprecher*in 1');
+  // A listed chapter title is dropped even when it is short.
+  const withPanel = page
+    .replace('Begrüßung und die Vorstellung von Jan', 'Intro')
+    .replace('</body>', '<div id="chapters-panel"><p data-encore-id="listRowTitle">Intro</p></div></body>');
+  assert.equal(scrape(withPanel).turns[0].speaker, 'Sprecher*in 1');
+});
+
 test('reports a logged-out viewer', () => {
   const page = html.replace(/(<script id="appServerConfig"[^>]*>)[^<]*/, `$1${anonymousConfig}`);
   assert.equal(scrape(page).status, 'login-required');

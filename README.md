@@ -10,7 +10,7 @@ Chrome extension (Manifest V3) that copies the transcript of a Spotify podcast e
 
 The icon is only active on episode pages (`open.spotify.com/episode/...`); elsewhere it is greyed out.
 
-If something is missing you get a red `!` on the icon and a short notice in the page:
+If something is missing you get a red `!` on the icon and a short notice at the top right of the page:
 
 | Situation | What happens |
 | --- | --- |
@@ -18,6 +18,7 @@ If something is missing you get a red `!` on the icon and a short notice in the 
 | Transcript tab not open | Notice at the top right: open a podcast episode page on Spotify and make the Transcript tab visible. |
 | Episode has no transcript | Notice that there is no transcript. |
 | Transcript empty or still loading | Notice to try again in a moment. |
+| Unexpected error | Notice with the error message. |
 
 ## Output
 

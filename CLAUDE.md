@@ -19,6 +19,12 @@ Rules for the icon and its messages:
 
 Obsidian note without YAML frontmatter: it starts directly with the header block (`# Podcast-Episode: [[title]]`, `## Podcast: [[show]]`, `## URL der Episode: [[url]]`, `## [[date]]`, `## Länge: [[duration]]`; lines whose value is unknown are omitted; the labels are German by the user's choice) and `## Transcript` with one block per speaker turn (bold speaker, then the lines joined into one paragraph).  Spotify's transcript DOM carries no timestamps, so none are exported. Only the Transcript tab is exported: the scraper reads `#transcript-panel` and nothing else, so Chapters and Description stay out (covered by a test). Chapter headings inside the transcript share the bold speaker style; the scraper drops bold labels that match a `#chapters-panel` `listRowTitle` or, as a heuristic, labels that occur once with four or more words while other labels repeat. The exact markup of those headings is unconfirmed; replace the heuristic with a structural check once it is known.
 
+## Project status
+
+- Working and used in Chrome: icon click copies the note, login redirect, per-tab icon enabling, green check / red `!` feedback with a top-right notice, chapter heading filter. Covered by Node tests (`npm test`).
+- Open: the exact markup of chapter headings inside the transcript is unconfirmed, so the filter still uses a heuristic (see Output format). A sample of that markup from a real page would allow a structural check.
+- The README carries a "Copyright and terms of use" section (user responsibility for copyright and the Spotify terms, no affiliation, no warranty). Keep it when editing the README.
+
 ## Architecture
 
 Plain JavaScript, no build step, no runtime dependencies. Do not introduce a bundler or framework without agreement. `jsdom` is a dev dependency used only by the tests.

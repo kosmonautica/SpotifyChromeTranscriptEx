@@ -27,7 +27,7 @@ title: "#211 Was ist die Campfire Method mit Jan Keck"
 show: "[[Unboxing New Work]]"
 url: https://open.spotify.com/episode/6abc123XYZ
 show_url: https://open.spotify.com/show/33IjblLOWc7b4SLzWed02x
-date: 2026-10-05
+date: "[[2026-10-05]]"
 duration: "1 hr"
 speakers:
   - "Sprecher*in 1"
@@ -40,7 +40,7 @@ tags:
 # #211 Was ist die Campfire Method mit Jan Keck
 
 **Show:** [[Unboxing New Work]]
-**Date:** 2026-10-05
+**Date:** [[2026-10-05]]
 **Duration:** 1 hr
 **URL:** [#211 Was ist die Campfire Method mit Jan Keck](https://open.spotify.com/episode/6abc123XYZ)
 
@@ -55,7 +55,7 @@ Bevor es losgeht. herzlich willkommen zu Unboxing New Work ...
 Vielen Dank für die Einladung.
 ```
 
-Properties that Spotify does not show are left out. The date is taken from the episode page; relative dates such as "Today" are converted to the current day. Spotify's transcript carries no timestamps, so none are exported. Speaker names are whatever Spotify shows ("Sprecher*in 1", ...).
+Properties that Spotify does not show are left out. The date is written as a wikilink (daily-note style) and is taken from the episode page; relative dates such as "Today" are converted to the current day. Spotify's transcript carries no timestamps, so none are exported. Speaker names are whatever Spotify shows ("Sprecher*in 1", ...).
 
 ## Install (unpacked)
 

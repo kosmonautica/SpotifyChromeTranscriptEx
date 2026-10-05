@@ -17,7 +17,7 @@ Rules for the icon and its messages:
 
 ## Output format
 
-Obsidian note: YAML properties (`title`, `show` as wikilink, `url`, `show_url`, `date` as YYYY-MM-DD, `duration`, `speakers`, `tags`), then a heading, a short info block with the show as `[[wikilink]]`, and `## Transcript` with one block per speaker turn (bold speaker, then the lines joined into one paragraph). Properties that are unknown are omitted. Spotify's transcript DOM carries no timestamps, so none are exported.
+Obsidian note: YAML properties (`title`, `show` as wikilink, `url`, `show_url`, `date` as `[[YYYY-MM-DD]]` wikilink, `duration`, `speakers`, `tags`), then a heading, a short info block with the show and the date as `[[wikilinks]]`, and `## Transcript` with one block per speaker turn (bold speaker, then the lines joined into one paragraph). Properties that are unknown are omitted. Spotify's transcript DOM carries no timestamps, so none are exported.
 
 ## Architecture
 

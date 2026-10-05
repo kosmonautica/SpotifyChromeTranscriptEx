@@ -20,6 +20,26 @@ If something is missing you get a red `!` on the icon and a short notice at the 
 | Transcript empty or still loading | Notice to try again in a moment. |
 | Unexpected error | Notice with the error message. |
 
+## Template and settings
+
+The note is built from a Markdown template that you edit in the extension settings (right-click the icon, "Options"). Everything outside `{{...}}` is copied as is, so you can use any Markdown, including Obsidian syntax such as frontmatter or `[[wikilinks]]`. A template saved in the settings overrides the default; "Reset to default" restores it. The template is stored in `chrome.storage.sync`.
+
+Placeholders: `{{title}}`, `{{show}}`, `{{showUrl}}`, `{{url}}`, `{{date}}` (YYYY-MM-DD), `{{duration}}`, `{{transcript}}` (all speaker turns). Filters: `{{date|wikilink}}` wraps the value in an Obsidian `[[link]]` (characters Obsidian does not allow are replaced by spaces), `{{show|default:"unknown"}}` fills in a text for empty values. A line whose placeholders are all empty is left out.
+
+Default template:
+
+```markdown
+# Podcast-Episode: {{title|wikilink}}
+## Podcast: {{show|wikilink}}
+## URL der Episode: [[{{url}}]]
+## {{date|wikilink}}
+## Länge: {{duration|wikilink}}
+
+## Transcript
+
+{{transcript}}
+```
+
 ## Output
 
 ```markdown
@@ -40,7 +60,7 @@ Bevor es losgeht. herzlich willkommen zu Unboxing New Work ...
 Vielen Dank für die Einladung.
 ```
 
-Lines whose value Spotify does not show are left out. There is no YAML frontmatter; the note starts with the header. Title, podcast, URL, date and length are written as wikilinks (the date in daily-note style); characters Obsidian does not allow in links (such as `#`) are removed from the title and the podcast name. The date is taken from the episode page; relative dates such as "Today" are converted to the current day. Spotify's transcript carries no timestamps, so none are exported. Only the Transcript tab is exported; the Chapters and Description tabs are ignored, and chapter headings that Spotify shows inside the transcript are not exported as speakers (matched by title when the Chapters panel is in the page, otherwise by a heuristic: a unique label of four or more words while other speakers repeat). Speaker names are whatever Spotify shows ("Sprecher*in 1", ...).
+The example shows the default template. Lines whose value Spotify does not show are left out. There is no YAML frontmatter; the note starts with the header. Title, podcast, URL, date and length are written as wikilinks (the date in daily-note style); characters Obsidian does not allow in links (such as `#`) are removed from the title and the podcast name. The date is taken from the episode page; relative dates such as "Today" are converted to the current day. Spotify's transcript carries no timestamps, so none are exported. Only the Transcript tab is exported; the Chapters and Description tabs are ignored, and chapter headings that Spotify shows inside the transcript are not exported as speakers (matched by title when the Chapters panel is in the page, otherwise by a heuristic: a unique label of four or more words while other speakers repeat). Speaker names are whatever Spotify shows ("Sprecher*in 1", ...).
 
 ## Install (unpacked)
 

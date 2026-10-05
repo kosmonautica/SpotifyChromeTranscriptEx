@@ -1,4 +1,5 @@
 import { buildMarkdown } from './lib/markdown.js';
+import { loadTemplate } from './lib/defaults.js';
 import { isEpisodeUrl, loginUrl } from './lib/urls.js';
 
 const GREEN = '#1db954';
@@ -68,7 +69,7 @@ chrome.action.onClicked.addListener(async (tab) => {
     }
     if (episode.status !== 'ok') return fail(tab.id, episode.status);
 
-    const markdown = buildMarkdown(episode);
+    const markdown = buildMarkdown(episode, new Date(), await loadTemplate());
     const [{ result: copied }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: writeClipboard, args: [markdown] });
     if (!copied) return fail(tab.id, 'copy-failed');
     await flashBadge(tab.id, '✓', GREEN, 2500);

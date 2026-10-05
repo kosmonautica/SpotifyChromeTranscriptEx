@@ -65,3 +65,12 @@ test('URL helpers', () => {
   assert.equal(canonicalEpisodeUrl('https://open.spotify.com/intl-de/episode/6abc123XYZ?si=1#x'), 'https://open.spotify.com/episode/6abc123XYZ');
   assert.equal(loginUrl('https://open.spotify.com/episode/a'), 'https://accounts.spotify.com/login?continue=https%3A%2F%2Fopen.spotify.com%2Fepisode%2Fa');
 });
+
+test('a custom template is filled and empty lines are dropped', () => {
+  const tpl = '# {{title}}\nShow: {{show|wikilink}}\nLength: {{duration}}\n\n{{transcript}}';
+  const md = buildMarkdown({ ...episode, show: '', duration: '' }, NOW, tpl);
+  assert.equal(md.split('\n')[0], '# #211 Was ist "die" Campfire Method');
+  assert.doesNotMatch(md, /Show:|Length:/);
+  assert.match(md, /\*\*Sprecher\\\*in 1\*\*\n\nBevor es losgeht\./);
+  assert.ok(md.endsWith('Gern.\n'));
+});

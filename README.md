@@ -15,7 +15,7 @@ If something is missing you get a red `!` on the icon and a short notice in the 
 | Situation | What happens |
 | --- | --- |
 | Not logged in | The tab is redirected to the official Spotify login and returns to the episode afterwards. Click the icon again after logging in. |
-| Transcript tab not open | Notice to open the Transcript tab first. |
+| Transcript tab not open | Notice at the top right: open a podcast episode page on Spotify and make the Transcript tab visible. |
 | Episode has no transcript | Notice that there is no transcript. |
 | Transcript empty or still loading | Notice to try again in a moment. |
 

@@ -4,10 +4,12 @@ import { isEpisodeUrl, loginUrl } from './lib/urls.js';
 const GREEN = '#1db954';
 const RED = '#d93025';
 
+const HINT = 'Open a podcast episode page on Spotify and make the "Transcript" tab visible, then click the icon again.';
+
 const MESSAGES = {
-  'not-episode': 'This is not a podcast episode page.',
+  'not-episode': HINT,
   'no-transcript': 'This episode has no transcript.',
-  'open-transcript-tab': 'Open the "Transcript" tab first, then click the icon again.',
+  'open-transcript-tab': HINT,
   empty: 'The transcript is empty or still loading. Try again in a moment.',
   'copy-failed': 'Could not write to the clipboard.',
   'login-required': 'You are not logged in. Redirecting to the Spotify login ...',
@@ -36,7 +38,7 @@ function showToast(message) {
   const el = document.createElement('div');
   el.textContent = message;
   el.style.cssText =
-    'position:fixed;right:16px;bottom:96px;z-index:2147483647;max-width:320px;padding:12px 16px;' +
+    'position:fixed;top:16px;right:16px;z-index:2147483647;max-width:320px;padding:12px 16px;' +
     'border-radius:8px;background:#242424;color:#fff;font:14px/1.4 sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.5)';
   document.body.appendChild(el);
   setTimeout(() => el.remove(), 5000);

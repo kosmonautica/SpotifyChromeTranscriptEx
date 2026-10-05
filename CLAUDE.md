@@ -13,7 +13,7 @@ Rules for the icon and its messages:
 
 - The icon is only enabled on episode pages (`https://open.spotify.com/episode/...`, also with an `intl-xx` prefix); everywhere else Chrome greys it out. Spotify is a single-page app, so `background.js` re-checks the URL on every tab update.
 - Not logged in: the tab is redirected to the official login (`accounts.spotify.com/login?continue=<episode url>`). Login state comes from `isAnonymous` in the base64 JSON of `script#appServerConfig`, with the user widget as fallback.
-- Transcript tab not selected: notice "open the Transcript tab first". No transcript tab or a disabled one: "no transcript". Empty panel: "empty or still loading".
+- Transcript tab not selected (or not an episode page): a notice at the top right of the page says to open a podcast episode page on Spotify and make the Transcript tab visible (shared `HINT` text; all notices appear top right). No transcript tab or a disabled one: "no transcript". Empty panel: "empty or still loading".
 
 ## Output format
 

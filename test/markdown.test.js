@@ -21,15 +21,10 @@ const episode = {
   ],
 };
 
-test('builds an Obsidian note with properties, wikilinks and speaker turns', () => {
+test('builds an Obsidian note with a wikilink header and speaker turns', () => {
   const md = buildMarkdown(episode, NOW);
-  assert.match(md, /^---\ntitle: "#211 Was ist \\"die\\" Campfire Method"\n/);
-  assert.match(md, /^show: "\[\[Unboxing New Work\]\]"$/m);
-  assert.match(md, /^url: https:\/\/open\.spotify\.com\/episode\/6abc123XYZ$/m);
-  assert.match(md, /^date: "\[\[2026-10-05\]\]"$/m);
-  assert.match(md, /^duration: "1 hr"$/m);
-  assert.match(md, /^speakers:\n {2}- "Sprecher\*in 1"\n {2}- "Sprecher\*in 2"$/m);
-  assert.match(md, /^tags:\n {2}- podcast\n {2}- transcript\n---$/m);
+  assert.ok(md.startsWith('# Podcast-Episode: '), 'the note starts with the header, no frontmatter');
+  assert.doesNotMatch(md, /^---$/m);
   assert.match(
     md,
     /^# Podcast-Episode: \[\[211 Was ist "die" Campfire Method\]\]\n## Podcast: \[\[Unboxing New Work\]\]\n## URL der Episode: \[\[https:\/\/open\.spotify\.com\/episode\/6abc123XYZ\]\]\n## \[\[2026-10-05\]\]\n## Länge: \[\[1 hr\]\]\n\n## Transcript/m,
@@ -39,13 +34,11 @@ test('builds an Obsidian note with properties, wikilinks and speaker turns', () 
 
 test('wikilinks drop characters Obsidian does not allow', () => {
   const md = buildMarkdown({ ...episode, show: 'A/B: [Show] #1' }, NOW);
-  assert.match(md, /^show: "\[\[A B Show 1\]\]"$/m);
   assert.match(md, /^## Podcast: \[\[A B Show 1\]\]$/m);
 });
 
 test('omits properties that are unknown', () => {
   const md = buildMarkdown({ ...episode, show: '', showUrl: '', dateRaw: '', duration: '' }, NOW);
-  assert.doesNotMatch(md, /^(show|show_url|date|duration):/m);
   assert.doesNotMatch(md, /^## (Podcast|Länge):/m);
   assert.doesNotMatch(md, /^## \[\[/m);
 });

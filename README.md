@@ -22,21 +22,6 @@ If something is missing you get a red `!` on the icon and a short notice in the 
 ## Output
 
 ```markdown
----
-title: "#211 Was ist die Campfire Method mit Jan Keck"
-show: "[[Unboxing New Work]]"
-url: https://open.spotify.com/episode/6abc123XYZ
-show_url: https://open.spotify.com/show/33IjblLOWc7b4SLzWed02x
-date: "[[2026-10-05]]"
-duration: "1 hr"
-speakers:
-  - "Sprecher*in 1"
-  - "Sprecher*in 2"
-tags:
-  - podcast
-  - transcript
----
-
 # Podcast-Episode: [[211 Was ist die Campfire Method mit Jan Keck]]
 ## Podcast: [[Unboxing New Work]]
 ## URL der Episode: [[https://open.spotify.com/episode/6abc123XYZ]]
@@ -54,7 +39,7 @@ Bevor es losgeht. herzlich willkommen zu Unboxing New Work ...
 Vielen Dank für die Einladung.
 ```
 
-Properties that Spotify does not show are left out. Title, podcast, URL, date and length are written as wikilinks (the date in daily-note style); characters Obsidian does not allow in links (such as `#`) are removed from the title and the podcast name. The date is taken from the episode page; relative dates such as "Today" are converted to the current day. Spotify's transcript carries no timestamps, so none are exported. Only the Transcript tab is exported; the Chapters and Description tabs are ignored. Speaker names are whatever Spotify shows ("Sprecher*in 1", ...).
+Lines whose value Spotify does not show are left out. There is no YAML frontmatter; the note starts with the header. Title, podcast, URL, date and length are written as wikilinks (the date in daily-note style); characters Obsidian does not allow in links (such as `#`) are removed from the title and the podcast name. The date is taken from the episode page; relative dates such as "Today" are converted to the current day. Spotify's transcript carries no timestamps, so none are exported. Only the Transcript tab is exported; the Chapters and Description tabs are ignored. Speaker names are whatever Spotify shows ("Sprecher*in 1", ...).
 
 ## Install (unpacked)
 

@@ -38,10 +38,12 @@ function showToast(message) {
   const el = document.createElement('div');
   el.textContent = message;
   el.style.cssText =
-    'position:fixed;top:16px;right:16px;z-index:2147483647;max-width:320px;padding:12px 16px;' +
-    'border-radius:8px;background:#242424;color:#fff;font:14px/1.4 sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.5)';
-  document.body.appendChild(el);
-  setTimeout(() => el.remove(), 5000);
+    'all:initial;position:fixed;top:16px;right:16px;z-index:2147483647;display:block;box-sizing:border-box;' +
+    'max-width:320px;padding:12px 16px;border-radius:8px;background:#242424;color:#fff;' +
+    'font:14px/1.4 sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.5);pointer-events:none';
+  // On the root element so a transformed or clipped <body> cannot hide it.
+  document.documentElement.appendChild(el);
+  setTimeout(() => el.remove(), 8000);
 }
 
 async function flashBadge(tabId, text, color, ms) {
@@ -72,6 +74,9 @@ chrome.action.onClicked.addListener(async (tab) => {
     await flashBadge(tab.id, '✓', GREEN, 2500);
   } catch (e) {
     console.error(e);
+    await chrome.scripting
+      .executeScript({ target: { tabId: tab.id }, func: showToast, args: [`Unexpected error: ${e && e.message ? e.message : e}`] })
+      .catch(() => {});
     await flashBadge(tab.id, '!', RED, 5000);
   }
 });

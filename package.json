@@ -1,0 +1,11 @@
+{
+  "name": "spotify-chrome-transcript-ex",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "devDependencies": {
+    "jsdom": "^26.0.0"
+  }
+}

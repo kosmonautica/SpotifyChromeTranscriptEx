@@ -55,6 +55,16 @@ Lines whose value Spotify does not show are left out. There is no YAML frontmatt
 
 No tracking, no external requests, no data leaves your browser.
 
+## Copyright and terms of use
+
+This is an independent, unofficial tool. It is not affiliated with, endorsed by or sponsored by Spotify AB, and "Spotify" is a trademark of its owner.
+
+Podcast episodes, their transcripts and the accompanying metadata may be protected by copyright and related rights held by Spotify, the podcast producers, the speakers or other third parties. The extension grants no rights to any such content. It only reads the page you are looking at in your own browser, with your own account, and places the text on your clipboard on your explicit click. It does not store, upload, publish or distribute anything.
+
+**Each user is solely responsible for how the copied transcript is used.** This includes complying with applicable copyright law (for example, in Germany the limits on private copying in section 53 of the Urheberrechtsgesetz, which does not cover commercial purposes, and the rules on text and data mining in section 44b, which are subject to a rights holder's reservation of rights) and with the terms of the services involved, in particular the Spotify Terms and Conditions of Use. As of the last review of this note, those terms grant only a limited, personal, non-commercial right to use the service and its content, and prohibit copying, reproducing or redistributing content beyond what is expressly permitted, as well as scraping or collecting information by automated means. Please read the current terms yourself, as they can change, and check whether your intended use is permitted. Do not publish or share transcripts without the permission of the rights holders, and do not use them for commercial purposes, for training machine learning models or for bulk collection.
+
+The software is provided "as is", without warranty of any kind. To the extent permitted by law, the author accepts no liability for any use of the extension or of content copied with it. This note is general information, not legal advice.
+
 ## Development
 
 ```

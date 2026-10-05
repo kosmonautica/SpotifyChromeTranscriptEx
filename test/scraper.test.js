@@ -36,6 +36,11 @@ test('the generated-transcript notice is not part of the transcript', () => {
   assert.doesNotMatch(all, /generated automatically/);
 });
 
+test('the chapters tab is not part of the transcript', () => {
+  const all = scrape().turns.flatMap((t) => t.lines).join(' ');
+  assert.doesNotMatch(all, /Kapitel/);
+});
+
 test('reports a logged-out viewer', () => {
   const page = html.replace(/(<script id="appServerConfig"[^>]*>)[^<]*/, `$1${anonymousConfig}`);
   assert.equal(scrape(page).status, 'login-required');

@@ -17,7 +17,7 @@ Rules for the icon and its messages:
 
 ## Output format
 
-Obsidian note: YAML properties (`title`, `show` as wikilink, `url`, `show_url`, `date` as `[[YYYY-MM-DD]]` wikilink, `duration`, `speakers`, `tags`), then the header block (`# Podcast-Episode: [[title]]`, `## Podcast: [[show]]`, `## URL der Episode: [[url]]`, `## [[date]]`, `## Länge: [[duration]]`; lines whose value is unknown are omitted; the labels are German by the user's choice) and `## Transcript` with one block per speaker turn (bold speaker, then the lines joined into one paragraph). Properties that are unknown are omitted. Spotify's transcript DOM carries no timestamps, so none are exported. Only the Transcript tab is exported: the scraper reads `#transcript-panel` and nothing else, so Chapters and Description stay out (covered by a test).
+Obsidian note without YAML frontmatter: it starts directly with the header block (`# Podcast-Episode: [[title]]`, `## Podcast: [[show]]`, `## URL der Episode: [[url]]`, `## [[date]]`, `## Länge: [[duration]]`; lines whose value is unknown are omitted; the labels are German by the user's choice) and `## Transcript` with one block per speaker turn (bold speaker, then the lines joined into one paragraph).  Spotify's transcript DOM carries no timestamps, so none are exported. Only the Transcript tab is exported: the scraper reads `#transcript-panel` and nothing else, so Chapters and Description stay out (covered by a test).
 
 ## Architecture
 

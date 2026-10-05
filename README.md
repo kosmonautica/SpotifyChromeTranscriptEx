@@ -39,7 +39,7 @@ Bevor es losgeht. herzlich willkommen zu Unboxing New Work ...
 Vielen Dank für die Einladung.
 ```
 
-Lines whose value Spotify does not show are left out. There is no YAML frontmatter; the note starts with the header. Title, podcast, URL, date and length are written as wikilinks (the date in daily-note style); characters Obsidian does not allow in links (such as `#`) are removed from the title and the podcast name. The date is taken from the episode page; relative dates such as "Today" are converted to the current day. Spotify's transcript carries no timestamps, so none are exported. Only the Transcript tab is exported; the Chapters and Description tabs are ignored. Speaker names are whatever Spotify shows ("Sprecher*in 1", ...).
+Lines whose value Spotify does not show are left out. There is no YAML frontmatter; the note starts with the header. Title, podcast, URL, date and length are written as wikilinks (the date in daily-note style); characters Obsidian does not allow in links (such as `#`) are removed from the title and the podcast name. The date is taken from the episode page; relative dates such as "Today" are converted to the current day. Spotify's transcript carries no timestamps, so none are exported. Only the Transcript tab is exported; the Chapters and Description tabs are ignored, and chapter headings that Spotify shows inside the transcript are not exported as speakers (matched by title when the Chapters panel is in the page, otherwise by a heuristic: a unique label of four or more words while other speakers repeat). Speaker names are whatever Spotify shows ("Sprecher*in 1", ...).
 
 ## Install (unpacked)
 

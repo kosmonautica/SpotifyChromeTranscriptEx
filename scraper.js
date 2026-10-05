@@ -25,12 +25,31 @@ function extractEpisode(doc, href) {
   if (tab.getAttribute('aria-selected') !== 'true') return { status: 'open-transcript-tab' };
 
   // Speaker headers are bold "marginal" text, transcript lines carry dir="auto".
-  const turns = [];
+  // Chapter headings inside the transcript use the same bold style, so they are filtered out:
+  // by title when the Chapters panel is in the DOM, otherwise by heuristic (a label that occurs
+  // once and has four or more words while other labels repeat is a heading, not a speaker).
   const panel = doc.getElementById('transcript-panel');
-  for (const span of panel ? panel.querySelectorAll('span[data-encore-id="text"]') : []) {
+  const spans = [...(panel ? panel.querySelectorAll('span[data-encore-id="text"]') : [])];
+  const chapterTitles = new Set(
+    [...doc.querySelectorAll('#chapters-panel [data-encore-id="listRowTitle"]')].map(text).filter(Boolean)
+  );
+  const counts = new Map();
+  for (const span of spans) {
+    if (!span.classList.contains('encore-text-marginal-bold')) continue;
+    const value = text(span);
+    if (value) counts.set(value, (counts.get(value) || 0) + 1);
+  }
+  const hasRepeatedSpeaker = [...counts.values()].some((n) => n > 1);
+  const isHeading = (value) =>
+    chapterTitles.has(value) ||
+    (hasRepeatedSpeaker && counts.get(value) === 1 && value.split(' ').length >= 4);
+
+  const turns = [];
+  for (const span of spans) {
     const value = text(span);
     if (!value) continue;
     if (span.classList.contains('encore-text-marginal-bold')) {
+      if (isHeading(value)) continue;
       const last = turns[turns.length - 1];
       if (!last || last.speaker !== value) turns.push({ speaker: value, lines: [] });
     } else if (span.getAttribute('dir') === 'auto') {
